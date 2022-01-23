@@ -1,6 +1,6 @@
-import { useState } from "react";
+import React from "react";
 
-const SerchPanel = () => {
+const SerchPanel = ({ users, param, setParam }) => {
   return (
     <form>
       <div>
@@ -16,7 +16,9 @@ const SerchPanel = () => {
           }>
           <option value="">负责人</option>
           {users.map((user) => (
-            <option value={user.id}>{user.name}</option>
+            <option key={user.id} value={user.id}>
+              {user.name}
+            </option>
           ))}
         </select>
       </div>

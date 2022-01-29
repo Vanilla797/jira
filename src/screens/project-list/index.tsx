@@ -12,7 +12,7 @@ const ProjectListScreen = () => {
     personId: "",
   });
 
-  const deBouncedParam = useDebounce(param, 500);
+  const deBouncedParam = useDebounce(param, 300);
 
   const [list, setList] = useState([]);
   const [users, setUsers] = useState([]);

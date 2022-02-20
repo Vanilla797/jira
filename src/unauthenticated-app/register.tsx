@@ -13,7 +13,7 @@ function RegisterScreen() {
     register({ username, password });
   };
   return (
-    <form onClick={handleSubmit}>
+    <form onSubmit={handleSubmit}>
       <div>
         <label htmlFor="username">用户名</label>
         <input type="text" id={"username"} />

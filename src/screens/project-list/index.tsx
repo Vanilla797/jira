@@ -2,9 +2,10 @@ import SerchPanel from "./serch-panel";
 import List from "./list";
 import { useState, useEffect } from "react";
 import React from "react";
-import * as qs from "qs";
+
 import cleanObject, { useDebounce, useMount } from "../../utils";
 import { useHttp } from "utils/http";
+import styled from "@emotion/styled";
 const apiUrl = process.env.REACT_APP_API_URL;
 
 const ProjectListScreen = () => {
@@ -20,16 +21,21 @@ const ProjectListScreen = () => {
   const client = useHttp();
   useEffect(() => {
     client("projects", { data: cleanObject(deBouncedParam) }).then(setList);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [deBouncedParam]);
   useMount(() => {
     client("users").then(setUsers);
   });
 
   return (
-    <div>
+    <Container>
+      <h1>项目列表</h1>
       <SerchPanel users={users} param={param} setParam={setParam} />
       <List users={users} list={list} />
-    </div>
+    </Container>
   );
 };
 export default ProjectListScreen;
+const Container = styled.div`
+  padding: 3.2rem;
+`;
